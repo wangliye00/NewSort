@@ -32,8 +32,8 @@ private:
 	T Partition(vector<T>& vec, int left, int right)
 	{
 		T pivotkey;
-		pivotkey = vec.at(low); //此处可以设计算法采用更随机位置的序列值作为起始
-		while(low < high)
+		pivotkey = vec.at(left); //此处可以设计算法采用更随机位置的序列值作为起始
+		while(left < right)
 		{
 			while(left < right && vec.at(right) >= pivotkey)
 			{
