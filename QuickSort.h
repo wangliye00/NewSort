@@ -17,46 +17,46 @@ public:
 		Qsort(m_sequence, 0, m_sequence.size()-1);
 	}
 private:
-    void Qsort(vector<T>& vec, int low, int high)
+    void Qsort(vector<T>& vec, int left, int right)
 	{
 		T pivot;
-		if(low < high)
+		if(left < right)
 		{
-			pivot = Partition(vec, low, high);
+			pivot = Partition(vec, left, right);
 
-			Qsort(vec, low, pivot-1);
-			Qsort(vec, pivot+1, high);
+			Qsort(vec, left, pivot-1);
+			Qsort(vec, pivot+1, right);
 		}
 	}
 
-	T Partition(vector<T>& vec, int low, int high)
+	T Partition(vector<T>& vec, int left, int right)
 	{
 		T pivotkey;
-		pivotkey = vec.at(low); //´Ë´¦¿ÉÒÔÉè¼ÆËã·¨²ÉÓÃ¸üËæ»úÎ»ÖÃµÄĞòÁĞÖµ×÷ÎªÆğÊ¼
+		pivotkey = vec.at(low); //æ­¤å¤„å¯ä»¥è®¾è®¡ç®—æ³•é‡‡ç”¨æ›´éšæœºä½ç½®çš„åºåˆ—å€¼ä½œä¸ºèµ·å§‹
 		while(low < high)
 		{
-			while(low < high && vec.at(high) >= pivotkey)
+			while(left < right && vec.at(right) >= pivotkey)
 			{
-				high--;
+				right--;
 			}
 
-			Swap(vec, low, high);
+			Swap(vec, left, right);
 
-			while(low < high && vec.at(low) <= pivotkey)
+			while(left < right && vec.at(left) <= pivotkey)
 			{
-				low++;
+				left++;
 			}
 
-			Swap(vec, low, high);
+			Swap(vec, left, right);
 		}
-		return low;
+		return left;
 	}
 
-	void Swap(vector<T>& vec, int low, int high)
+	void Swap(vector<T>& vec, int left, int right)
 	{
-		T tempt_value = vec.at(low);
-		vec.at(low) = vec.at(high);
-		vec.at(high) = tempt_value;
+		T tempt_value = vec.at(left);
+		vec.at(left) = vec.at(right);
+		vec.at(right) = tempt_value;
 	}
 
 	vector<T> m_sequence;
